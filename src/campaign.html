@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/home.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./dist/campDetails.js"></script>
+    <title>Home</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">CrowdBlock</a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a id="account" class="nav-link" href="#"
+            ><span class="sr-only">(current)</span></a
+          >
+        </li>
+      </ul>
+    </nav>
+    <div class="container">
+      <div class="row main justify-content-center">
+        <div class="col-8">
+          <img
+            style="align-self: center"
+            src="https://m.economictimes.com/thumb/msid-77693727,width-1200,height-900,resizemode-4,imgsize-261688/apple-13-inch-macbook-pro-sits-in-the-middle-of-the-usage-spectrum-and-has-multiple-processor-configuration-options-.jpg"
+            width="600px"
+            height="300px"
+          />
+          <p id="title" class="title">Aluminium build premium laptop</p>
+          <p id="description" class="description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at
+            mi vitae ante dignissim tempor non mollis mauris. Vivamus tincidunt
+            auctor dictum. Cras eleifend malesuada nibh eget tempus. Quisque
+            vitae viverra tellus, quis laoreet orci. Integer euismod tempus
+            ultricies. Maecenas euismod imperdiet urna eu suscipit. Aliquam erat
+            volutpat.
+          </p>
+          <div class="row">
+            <div class="col-6">
+              <p>Goal Amount: <span id="goal">20 eth</span></p>
+            </div>
+            <div class="col-6">
+              <p>Raised Amount: <span id="raised">10 eth</span></p>
+            </div>
+          </div>
+          <div id="progress" class="progress" style="width: 85%"></div>
+        </div>
+        <div class="col-4">
+          <div id="contribute" class="input-group mb-3">
+            <input
+              type="number"
+              class="form-control"
+              placeholder="eth"
+              aria-label="eth"
+              aria-describedby="basic-addon2"
+            />
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button">
+                Pay
+              </button>
+            </div>
+          </div>
+          <div id="request" class="input-group mb-3">
+            <input
+              type="number"
+              class="form-control"
+              placeholder="eth"
+              aria-label="eth"
+              aria-describedby="basic-addon2"
+            />
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button">
+                Request
+              </button>
+            </div>
+          </div>
+          <div id="profit" class="input-group mb-3">
+            <input
+              type="number"
+              class="form-control"
+              placeholder="eth"
+              aria-label="eth"
+              aria-describedby="basic-addon2"
+            />
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button">
+                Profit
+              </button>
+            </div>
+          </div>
+          <div class="request">
+            <p class="request-title">Withdraw Request</p>
+            <hr />
+            <p id="request-description">
+              Request:<br />
+              Need money to buy hardware.<br />
+              Amount: 10 eth.
+            </p>
+            <hr />
+            <button
+              id="approve"
+              type="button"
+              class="btn btn-success approve-btn container"
+            >
+              Approve Request
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

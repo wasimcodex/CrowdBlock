@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="./dist/createCamp.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">CrowdBlock</a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a id="account" class="nav-link" href="#"
+            >random address<span class="sr-only">(current)</span></a
+          >
+        </li>
+      </ul>
+    </nav>
+    <br />
+    <div
+      class="container container-fluid w-50 border p-4 h-90"
+      style="padding-bottom: 10px"
+    >
+      <form class="px-5">
+        <div class="custom-file form-group my-auto">
+          <input
+            type="file"
+            class="custom-file-input form-control"
+            id="customFile"
+          />
+          <label class="custom-file-label" for="customFile">Upload Image</label>
+        </div>
+        <br />
+        <div class="form-group my-auto">
+          <label for="title">Title:</label>
+          <input
+            id="title"
+            class="form-control"
+            type="text"
+            name="title"
+            placeholder="Title"
+          />
+        </div>
+        <br />
+        <div class="form-group my-auto">
+          <label for="description">Description:</label>
+          <textarea class="form-control" rows="5" id="description"></textarea>
+        </div>
+        <br />
+        <div class="form-group my-auto">
+          <label for="goal-amt">Goal Amount:</label>
+          <input
+            id="goal"
+            class="form-control"
+            type="number"
+            name="goal-amt"
+            placeholder="Goal Amount"
+          />
+        </div>
+        <br />
+        <div class="form-group my-auto">
+          <label for="min-contribution">Minimum Contribution:</label>
+          <input
+            id="min"
+            class="form-control"
+            type="number"
+            name="min-amt"
+            placeholder="Minimum Contribution"
+          />
+        </div>
+        <br />
+        <div id="create" type="button" class="btn btn-success"">
+          Create
+        </div>
+        <button id="cancel" type="button" class="btn btn-danger">Cancel</button>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+</script>
+
+<script>
+  // Add the following code if you want the name of the file appear on select
+  $(".custom-file-input").on("change", function () {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+  });
+</script>

@@ -1,0 +1,31 @@
+.picture {
+  padding: 10px;
+}
+
+.main {
+  padding: 10px;
+}
+
+.title {
+  font-size: larger;
+  font-family: monospace;
+  margin-top: auto;
+}
+
+.description {
+  font-size: medium;
+}
+
+.request {
+  border-style: solid;
+  border-radius: 5px;
+  border-color: fuchsia;
+  padding: 10px;
+  align-items: center;
+}
+
+.request-title {
+  vertical-align: middle;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+}
