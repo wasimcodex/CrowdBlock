@@ -16,14 +16,15 @@ contract Campaign {
     string public projDescription;
     uint256 public minimumContribution;
     uint256 public goalAmount;
+    uint256 public moneyRaised;
     bool public goalReached;
     mapping(address => bool) public approvers;
-    mapping(address => uint256) public contributors;
     address payable[] public payees;
     uint256 public approversCount;
     uint256 public profit;
     uint256 public numRequest = 0;
     Request public requests;
+    string public url;
 
     modifier restricted() {
         require(msg.sender == manager);
@@ -35,7 +36,8 @@ contract Campaign {
         string memory p_description,
         uint256 minimum,
         uint256 goal,
-        address campaignCreator
+        address campaignCreator,
+        string memory p_url
     ) public {
         title = p_title;
         projDescription = p_description;
@@ -43,21 +45,27 @@ contract Campaign {
         goalReached = false;
         manager = campaignCreator;
         minimumContribution = minimum;
+        url = p_url;
         profit = 0;
+        moneyRaised = 0;
     }
 
     function contribute() public payable {
         require(msg.value > minimumContribution);
 
         approvers[msg.sender] = true;
-        contributors[msg.sender] = msg.value;
         payees.push(address(uint256(msg.sender)));
 
         approversCount++;
+        moneyRaised = moneyRaised + msg.value;
 
-        if (goalAmount <= address(this).balance) {
+        if (goalAmount <= moneyRaised) {
             goalReached = true;
         }
+    }
+
+    function getImage() public view returns (string memory) {
+        return url;
     }
 
     function createRequest(
@@ -77,12 +85,20 @@ contract Campaign {
         numRequest = 1;
     }
 
+    function getRaised() public view returns (uint256) {
+        return moneyRaised;
+    }
+
     function approveRequest() public {
         require(approvers[msg.sender]);
         require(!requests.approvals[msg.sender]);
 
         requests.approvals[msg.sender] = true;
         requests.approvalCount++;
+    }
+
+    function isApproved() public view returns (bool) {
+        return requests.approvals[msg.sender];
     }
 
     function finalizeRequest() public payable {
@@ -136,8 +152,22 @@ contract Campaign {
         }
     }
 
-    function getRequest() public view returns (string memory, uint256) {
-        return (requests.description, requests.value);
+    function getRequest()
+        public
+        view
+        returns (
+            string memory,
+            uint256,
+            uint256,
+            uint256
+        )
+    {
+        return (
+            requests.description,
+            requests.value,
+            requests.approvalCount,
+            approversCount
+        );
     }
 }
 
@@ -148,10 +178,11 @@ contract CampaignFactory {
         string memory title,
         string memory description,
         uint256 minimum,
-        uint256 goal
+        uint256 goal,
+        string memory url
     ) public {
         Campaign newCampaign =
-            new Campaign(title, description, minimum, goal, msg.sender);
+            new Campaign(title, description, minimum, goal, msg.sender, url);
         deployedCampaigns.push(newCampaign);
     }
 

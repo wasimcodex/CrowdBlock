@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="./dist/home.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">CrowdBlock</a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a id="account" class="nav-link" href="#"
+            ><span class="sr-only">(current)</span></a
+          >
+        </li>
+      </ul>
+    </nav>
+    <br />
+    <br />
+    <div class="container container-fluid w-80" style="height: 600px">
+      <div class="row h-100">
+        <div id="left-camp" class="col-md-8 p-auto mx-auto">
+          <div class="navbar">
+            <h3>Campaigns</h3>
+            <a
+              href="http://127.0.0.1:5500/src/createCampaign.html"
+              class="btn btn-success"
+              >Create Campaign</a
+            >
+          </div>
+        </div>
+        <div id="right-camp" class="col-md-4 border" style="border-radius: 5px">
+          <h3>My Contributions</h3>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

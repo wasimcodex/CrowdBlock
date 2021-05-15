@@ -27,11 +27,18 @@
       crossorigin="anonymous"
     ></script>
     <script src="./dist/campDetails.js"></script>
-    <title>Home</title>
+    <title>Campaign</title>
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
       <a class="navbar-brand" href="#">CrowdBlock</a>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="http://127.0.0.1:5500/src/home.html"
+            >Home</a
+          >
+        </li>
+      </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <a id="account" class="nav-link" href="#"
@@ -42,35 +49,53 @@
     </nav>
     <div class="container">
       <div class="row main justify-content-center">
-        <div class="col-8">
+        <div
+          class="col-8"
+          style="
+            /* border-style: solid; */
+            /* border-width: 2px; */
+            padding-bottom: 10px;
+            /* border-radius: 5px; */
+            padding-right: 0px;
+            padding-left: 0px;
+          "
+        >
           <img
-            style="align-self: center"
-            src="https://m.economictimes.com/thumb/msid-77693727,width-1200,height-900,resizemode-4,imgsize-261688/apple-13-inch-macbook-pro-sits-in-the-middle-of-the-usage-spectrum-and-has-multiple-processor-configuration-options-.jpg"
-            width="600px"
+            id="image"
+            style="align-self: center; border-top: 5px"
+            src="./white.jpg"
+            width="100%"
             height="300px"
           />
-          <p id="title" class="title">Aluminium build premium laptop</p>
-          <p id="description" class="description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at
-            mi vitae ante dignissim tempor non mollis mauris. Vivamus tincidunt
-            auctor dictum. Cras eleifend malesuada nibh eget tempus. Quisque
-            vitae viverra tellus, quis laoreet orci. Integer euismod tempus
-            ultricies. Maecenas euismod imperdiet urna eu suscipit. Aliquam erat
-            volutpat.
-          </p>
-          <div class="row">
-            <div class="col-6">
-              <p>Goal Amount: <span id="goal">20 eth</span></p>
+          <div
+            style="
+              border-style: solid;
+              border-width: 2px;
+              border-bottom-right-radius: 5px;
+              padding: 5px;
+              padding-bottom: 10px;
+              border-bottom-left-radius: 5px;
+            "
+          >
+            <p id="title" class="title"></p>
+            <p id="description" class="description"></p>
+            <div class="row">
+              <div class="col-6">
+                <p>Goal Amount: <span id="goal">20 eth</span></p>
+              </div>
+              <div class="col-6">
+                <p>Raised Amount: <span id="raised">10 eth</span></p>
+              </div>
             </div>
-            <div class="col-6">
-              <p>Raised Amount: <span id="raised">10 eth</span></p>
-            </div>
+            <div id="progress" class="progress"></div>
+            <br />
+            <p>Campaign Balance: <span id="balance">0 eth</span></p>
           </div>
-          <div id="progress" class="progress" style="width: 85%"></div>
         </div>
         <div class="col-4">
           <div id="contribute" class="input-group mb-3">
             <input
+              id="contri-amt"
               type="number"
               class="form-control"
               placeholder="eth"
@@ -78,27 +103,51 @@
               aria-describedby="basic-addon2"
             />
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button">
+              <button id="pay" class="btn btn-success" type="button">
                 Pay
               </button>
             </div>
           </div>
-          <div id="request" class="input-group mb-3">
-            <input
-              type="number"
-              class="form-control"
-              placeholder="eth"
-              aria-label="eth"
-              aria-describedby="basic-addon2"
-            />
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button">
-                Request
-              </button>
+          <div
+            id="request"
+            class="container"
+            style="border-style: solid; border-width: 1px; border-radius: 5px"
+          >
+            <p>Create Request</p>
+            <div class="input-group mb-3">
+              <input
+                id="request-reason"
+                type="text"
+                style="margin-bottom: 3px"
+                class="form-control"
+                placeholder="Reason"
+                aria-label="Reason"
+                aria-describedby="basic-addon2"
+              />
+              <div class="input-group mb-3">
+                <input
+                  id="request-amt"
+                  type="number"
+                  class="form-control"
+                  placeholder="eth"
+                  aria-label="eth"
+                  aria-describedby="basic-addon1"
+                />
+                <div class="input-group-append">
+                  <button
+                    id="pay-request"
+                    class="btn btn-success"
+                    type="button"
+                  >
+                    Request
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          <div id="profit" class="input-group mb-3">
+          <div id="profit" class="input-group mb-3 mt-3">
             <input
+              id="profit-amt"
               type="number"
               class="form-control"
               placeholder="eth"
@@ -106,27 +155,30 @@
               aria-describedby="basic-addon2"
             />
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button">
+              <button
+                id="pay-profit"
+                class="btn btn-outline-secondary"
+                type="button"
+              >
                 Profit
               </button>
             </div>
           </div>
-          <div class="request">
+          <div id="request-card" class="request">
             <p class="request-title">Withdraw Request</p>
             <hr />
             <p id="request-description">
               Request:<br />
-              Need money to buy hardware.<br />
-              Amount: 10 eth.
+              <span id="req-des"></span><br />
+              Amount: <span id="req-amt"></span><br />
+              Approvers Count: <span id="req-count"></span>
             </p>
             <hr />
             <button
               id="approve"
               type="button"
               class="btn btn-success approve-btn container"
-            >
-              Approve Request
-            </button>
+            ></button>
           </div>
         </div>
       </div>
